@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variáveis e utilitários extras */
+:root {
+  --color-primary: #009245;
+  --color-secondary: #f38e3c;
+  --color-secondary-dark: #2f6e4a;
+}
+
+.bg-primary { background-color: var(--color-primary); }
+.bg-secondary { background-color: var(--color-secondary); }
+.bg-secondary-dark { background-color: var(--color-secondary-dark); }
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-secondary); }
