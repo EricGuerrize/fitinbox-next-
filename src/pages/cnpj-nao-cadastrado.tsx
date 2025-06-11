@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from '../components/Header';
 
 const CNPJNotFoundPage = () => {
   const handleContactClick = () => {
@@ -15,25 +16,15 @@ const CNPJNotFoundPage = () => {
   return (
     <div className="min-h-screen bg-gray-200 font-sans">
       {/* Header */}
-      <div className="bg-white flex justify-between items-center px-10 py-2.5 border-b border-gray-300">
-        <img 
-          className="w-36" 
-          src="/assets/logo.jpg" 
-          alt="Logo Fit In Box"
-          onError={(e) => {
-            e.target.style.display = 'none';
-          }}
-        />
-        <div className="flex items-center gap-5">
-          <span className="font-bold text-yellow-700">CNPJ NÃO CADASTRADO</span>
-          <button 
-            onClick={handleExitClick}
-            className="px-5 py-2.5 rounded bg-orange-500 text-white font-bold cursor-pointer border-none hover:bg-orange-600 transition-colors"
-          >
-            SAIR
-          </button>
-        </div>
-      </div>
+      <Header>
+        <span className="font-bold text-yellow-700">CNPJ NÃO CADASTRADO</span>
+        <button
+          onClick={handleExitClick}
+          className="px-5 py-2.5 rounded bg-orange-500 text-white font-bold cursor-pointer border-none hover:bg-orange-600 transition-colors"
+        >
+          SAIR
+        </button>
+      </Header>
 
       {/* Main Content */}
       <div className="flex justify-center items-center h-[calc(100vh-80px)]">

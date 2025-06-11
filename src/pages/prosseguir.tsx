@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Header from '../components/Header';
 
 const ProsseguirPage = () => {
   const [selectedOption, setSelectedOption] = useState('fazerPedido');
@@ -12,123 +13,72 @@ const ProsseguirPage = () => {
   };
 
   return (
-    <div style={{ margin: 0, fontFamily: 'Arial, sans-serif', backgroundColor: '#f5f5f5' }}>
+    <div className="m-0 font-sans bg-gray-100">
       {/* Header */}
-      <div style={{
-        background: 'white',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '10px 40px',
-        borderBottom: '1px solid #ccc'
-      }}>
-        <img 
-          style={{ height: '60px' }} 
-          src="/assets/logo.jpg" 
-          alt="Logo Fit In Box" 
-          onError={(e) => {
-            e.target.style.display = 'none';
-          }}
-        />
-        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-          <a 
-            href="/" 
-            style={{
-              padding: '10px 20px',
-              borderRadius: '5px',
-              color: 'white',
-              fontWeight: 'bold',
-              cursor: 'pointer',
-              border: 'none',
-              textDecoration: 'none',
-              backgroundColor: '#009245'
-            }}
-          >
-            PEDIDOS
-          </a>
-          <span style={{ fontWeight: 'bold', color: '#009245' }}>
-            H Azevedo de Abreu refeições saudáveis - CNPJ: 05.336.475/0001-77
-          </span>
-        </div>
-      </div>
+      <Header>
+        <a
+          href="/"
+          className="px-5 py-2.5 rounded bg-primary text-white font-bold no-underline"
+        >
+          PEDIDOS
+        </a>
+        <span className="font-bold text-primary">
+          H Azevedo de Abreu refeições saudáveis - CNPJ: 05.336.475/0001-77
+        </span>
+      </Header>
 
       {/* Main Content */}
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: 'calc(100vh - 80px)',
-        padding: '20px'
-      }}>
-        <div style={{
-          backgroundColor: 'white',
-          padding: '40px',
-          borderRadius: '10px',
-          boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-          width: '100%',
-          maxWidth: '600px',
-          textAlign: 'center'
-        }}>
-          <h2 style={{ color: '#757248', fontSize: '24px', marginBottom: '20px' }}>PROSSEGUIR</h2>
-          <p style={{ color: '#666', marginBottom: '30px' }}>
+      <div className="flex justify-center items-center min-h-[calc(100vh-80px)] p-5">
+        <div className="bg-white p-10 rounded-lg shadow-lg w-full max-w-xl text-center">
+          <h2 className="text-[#757248] text-xl mb-5">PROSSEGUIR</h2>
+          <p className="text-gray-600 mb-8">
             Você Está para Entrar em uma Área Restrita exclusiva para seu CNPJ. O que Gostaria de Fazer?
           </p>
           
           {/* Options */}
-          <div style={{ margin: '20px 0', textAlign: 'left' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '15px' }}>
+          <div className="my-5 text-left">
+            <div className="flex items-start mb-4">
               <input
                 type="radio"
                 id="fazerPedido"
                 name="opcao"
                 checked={selectedOption === 'fazerPedido'}
                 onChange={() => setSelectedOption('fazerPedido')}
-                style={{ marginRight: '10px', marginTop: '3px' }}
+                className="mr-2 mt-1"
               />
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <label htmlFor="fazerPedido" style={{ fontWeight: 'bold', color: '#333' }}>
+              <div className="flex flex-col">
+                <label htmlFor="fazerPedido" className="font-bold text-gray-800">
                   Quero realizar um pedido
                 </label>
-                <span style={{ color: '#666', fontSize: '14px' }}>
+                <span className="text-gray-600 text-sm">
                   Visualizar o que há de disponível para compras
                 </span>
               </div>
             </div>
-            
-            <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '15px' }}>
+
+            <div className="flex items-start mb-4">
               <input
                 type="radio"
                 id="consultarPedidos"
                 name="opcao"
                 checked={selectedOption === 'consultarPedidos'}
                 onChange={() => setSelectedOption('consultarPedidos')}
-                style={{ marginRight: '10px', marginTop: '3px' }}
+                className="mr-2 mt-1"
               />
-              <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <label htmlFor="consultarPedidos" style={{ fontWeight: 'bold', color: '#333' }}>
+              <div className="flex flex-col">
+                <label htmlFor="consultarPedidos" className="font-bold text-gray-800">
                   Consultar Pedidos Realizados
                 </label>
-                <span style={{ color: '#666', fontSize: '14px' }}>
+                <span className="text-gray-600 text-sm">
                   Visualize seu Histórico Completo de Pedidos
                 </span>
               </div>
             </div>
           </div>
-          
+
           <button
             onClick={handleContinue}
-            style={{
-              backgroundColor: '#d80909',
-              color: 'white',
-              padding: '15px',
-              width: '100%',
-              border: 'none',
-              borderRadius: '5px',
-              fontSize: '16px',
-              fontWeight: 'bold',
-              cursor: 'pointer',
-              marginTop: '20px'
-            }}
+            className="bg-red-700 text-white p-4 w-full rounded font-bold mt-5"
           >
             Continuar
           </button>
