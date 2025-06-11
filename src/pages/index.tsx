@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 
 const FitInBoxSupplierArea = () => {
+  const router = useRouter();
   const [cnpj, setCnpj] = useState('');
 
   // Função para aplicar máscara de CNPJ
-  const applyCnpjMask = (value) => {
+  const applyCnpjMask = (value: string) => {
     // Remove tudo que não é dígito
     const onlyNumbers = value.replace(/\D/g, '');
     
@@ -17,7 +19,7 @@ const FitInBoxSupplierArea = () => {
       .slice(0, 18); // Limita o tamanho
   };
 
-  const handleCnpjChange = (e) => {
+  const handleCnpjChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const maskedValue = applyCnpjMask(e.target.value);
     setCnpj(maskedValue);
   };
@@ -34,16 +36,16 @@ const FitInBoxSupplierArea = () => {
     // Verifica se o CNPJ está na lista de válidos
     if (cnpjsValidos.includes(cnpj)) {
       // CNPJ válido, redireciona para a tela de prosseguir
-      alert('CNPJ válido! Redirecionando...');
-      // window.location.href = "prosseguir.html";
+      console.log('CNPJ válido, redirecionando para /prosseguir');
+      router.push('/prosseguir');
     } else {
       // CNPJ não cadastrado, redireciona para a página de erro
-      alert('CNPJ não cadastrado!');
-      // window.location.href = "cnpj_nao_cadastrado.html";
+      console.log('CNPJ não cadastrado, redirecionando para /cnpj-nao-cadastrado');
+      router.push('/cnpj-nao-cadastrado');
     }
   };
 
-  const handleKeyPress = (e) => {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       validarCnpj();
     }
@@ -72,8 +74,11 @@ const FitInBoxSupplierArea = () => {
       }}>
         <img 
           style={{ height: '60px' }}
-          src="assets/logo.jpg" 
+          src="/assets/logo.jpg" 
           alt="Logo Fit In Box"
+          onError={(e) => {
+            (e.target as HTMLImageElement).style.display = 'none';
+          }}
         />
         <button 
           onClick={handleMeusPedidos}
@@ -131,7 +136,7 @@ const FitInBoxSupplierArea = () => {
             onChange={handleCnpjChange}
             onKeyPress={handleKeyPress}
             placeholder="INFORME O CNPJ"
-            maxLength="18"
+            maxLength={18}
             style={{
               flex: 1,
               border: 'none',
@@ -229,7 +234,7 @@ const FitInBoxSupplierArea = () => {
             <p style={{
               fontSize: '0.9em'
             }}>
-              Visualize Produtos Disponiveis para sua Empresa
+              Visualize Produtos Disponíveis para sua Empresa
             </p>
           </div>
 
@@ -258,7 +263,7 @@ const FitInBoxSupplierArea = () => {
             <p style={{
               fontSize: '0.9em'
             }}>
-              E Prático e Seguro
+              É Prático e Seguro
             </p>
           </div>
         </div>
